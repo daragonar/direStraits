@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('articles/{nombre?}',function($nombre="cocodrilo"){
+    echo "esto sera la seccion de los articulos escritor por " . $nombre ;
+});
