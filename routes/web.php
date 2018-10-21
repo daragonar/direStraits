@@ -9,12 +9,21 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('articles/{nombre?}',function($nombre="cocodrilo"){
-    echo "esto sera la seccion de los articulos escritor por " . $nombre ;
+/*
+Route::get('/articles/{nombre?}', function ($nombre = "hise") {
+    echo "esto son los articulos $nombre"; 
+});
+/**/ 
+Route::group(['prefix' => 'articles'], function () {
+
+    Route::get('view/{id}', [
+        'uses' => 'TestController@view',
+        'as' => 'articlesView'
+    ]);
 });
